@@ -3,12 +3,9 @@ Some important SQL queries to retrieve data from the database. Creating Tables, 
 
 // creating the database
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table FEATURE
---------------------------------------------------------
+//  File created - Thursday-October-09-2014   
+
+//  DDL for Table FEATURE
 
   CREATE TABLE "FEATURE" 
    (	"FEATURE_ID" VARCHAR2(20 BYTE), 
@@ -31,9 +28,8 @@ Insert into FEATURE (FEATURE_ID,FEATURE_NAME) values ('Fea3','billiard table');
 Insert into FEATURE (FEATURE_ID,FEATURE_NAME) values ('Fea4','Xbox 360');
 Insert into FEATURE (FEATURE_ID,FEATURE_NAME) values ('Fea5','board games');
 Insert into FEATURE (FEATURE_ID,FEATURE_NAME) values ('Fea6','pets allowed');
---------------------------------------------------------
---  DDL for Index FEATURE_PK
---------------------------------------------------------
+
+//  DDL for Index FEATURE_PK
 
   CREATE UNIQUE INDEX "FEATURE_PK" ON "FEATURE" ("FEATURE_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -41,9 +37,8 @@ Insert into FEATURE (FEATURE_ID,FEATURE_NAME) values ('Fea6','pets allowed');
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table FEATURE
---------------------------------------------------------
+  
+//  Constraints for Table FEATURE
 
   ALTER TABLE "FEATURE" ADD CONSTRAINT "FEATURE_PK" PRIMARY KEY ("FEATURE_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -54,18 +49,11 @@ Insert into FEATURE (FEATURE_ID,FEATURE_NAME) values ('Fea6','pets allowed');
   ALTER TABLE "FEATURE" MODIFY ("FEATURE_ID" NOT NULL ENABLE);
 
 
+// File created - Thursday-October-09-2014   
 
 
+//  DDL for Table VILLAUSER
 
-
-
-
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table VILLAUSER
---------------------------------------------------------
 
   CREATE TABLE "VILLAUSER" 
    (	"USERID" CHAR(5 BYTE), 
@@ -101,9 +89,9 @@ Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,
 Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,USER_DOB,USER_FAV_VILLA) values ('U13  ','owner3@villa.com','villa','Blanka',to_date('11-NOV-74','DD-MON-RR'),'Vil1');
 Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,USER_DOB,USER_FAV_VILLA) values ('U14  ','ceo@villa.com','nino','bino',to_date('01-JAN-91','DD-MON-RR'),'Vil2');
 Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,USER_DOB,USER_FAV_VILLA) values ('U15  ','manager2@villa.com','Bookish','Morinio',to_date('17-APR-50','DD-MON-RR'),'null');
---------------------------------------------------------
---  DDL for Index VILLA_USER_PK
---------------------------------------------------------
+
+//  DDL for Index VILLA_USER_PK
+
 
   CREATE UNIQUE INDEX "VILLA_USER_PK" ON "VILLAUSER" ("USERID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -111,9 +99,8 @@ Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table VILLAUSER
---------------------------------------------------------
+
+//  Constraints for Table VILLAUSER
 
   ALTER TABLE "VILLAUSER" ADD CONSTRAINT "VILLA_USER_PK" PRIMARY KEY ("USERID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -124,12 +111,9 @@ Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,
   ALTER TABLE "VILLAUSER" MODIFY ("USERID" NOT NULL ENABLE);
 
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table OWNER
---------------------------------------------------------
+// File created - Thursday-October-09-2014   
+
+//  DDL for Table OWNER
 
   CREATE TABLE "OWNER" 
    (	"OWNER_ID" CHAR(5 BYTE), 
@@ -151,9 +135,8 @@ Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,
   Insert into OWNER (OWNER_ID,CONTACT_NUMBER,MAMAGED_BY) values ('U12  ','222-222-2222','U15  ');
   Insert into OWNER (OWNER_ID,CONTACT_NUMBER,MAMAGED_BY) values ('U13  ','333-333-3333','U15  ');
   Insert into OWNER (OWNER_ID,CONTACT_NUMBER,MAMAGED_BY) values ('U14  ','444-444-4444',null);
---------------------------------------------------------
---  DDL for Index OWNER_PK
---------------------------------------------------------
+
+//  DDL for Index OWNER_PK
 
   CREATE UNIQUE INDEX "OWNER_PK" ON "OWNER" ("OWNER_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -161,9 +144,8 @@ Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table OWNER
---------------------------------------------------------
+
+// Constraints for Table OWNER
 
   ALTER TABLE "OWNER" ADD CONSTRAINT "OWNER_PK" PRIMARY KEY ("OWNER_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -172,20 +154,19 @@ Insert into VILLAUSER (USERID,USER_EMAIL,USER_NAME_FIRSTNAME,USER_NAME_LASTNAME,
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "OWNER" MODIFY ("OWNER_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table OWNER
---------------------------------------------------------
+
+//  Ref Constraints for Table OWNER
+
 
   ALTER TABLE "OWNER" ADD CONSTRAINT "OWNER_VILLAUSER_FK1" FOREIGN KEY ("OWNER_ID")
 	  REFERENCES "VILLAUSER" ("USERID") ON DELETE CASCADE ENABLE;
 
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table VILLA
---------------------------------------------------------
+
+//  File created - Thursday-October-09-2014   
+
+//  DDL for Table VILLA
+
 
   CREATE TABLE "VILLA" 
    (	"VILLA_ID" VARCHAR2(20 BYTE), 
@@ -215,9 +196,9 @@ Insert into VILLA (VILLA_ID,NAME,OWNER) values ('Vil9','Ali','U14  ');
 Insert into VILLA (VILLA_ID,NAME,OWNER) values ('Vil10','Kelley','U12  ');
 Insert into VILLA (VILLA_ID,NAME,OWNER) values ('Vil11','Dori','U12  ');
 Insert into VILLA (VILLA_ID,NAME,OWNER) values ('Vil12','Houti','U13  ');
---------------------------------------------------------
---  DDL for Index VILLA_PK
---------------------------------------------------------
+
+//  DDL for Index VILLA_PK
+
 
   CREATE UNIQUE INDEX "VILLA_PK" ON "VILLA" ("VILLA_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
@@ -225,9 +206,9 @@ Insert into VILLA (VILLA_ID,NAME,OWNER) values ('Vil12','Houti','U13  ');
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table VILLA
---------------------------------------------------------
+
+//  Constraints for Table VILLA
+
 
   ALTER TABLE "VILLA" ADD CONSTRAINT "VILLA_PK" PRIMARY KEY ("VILLA_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
@@ -236,20 +217,18 @@ Insert into VILLA (VILLA_ID,NAME,OWNER) values ('Vil12','Houti','U13  ');
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "VILLA" MODIFY ("VILLA_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table VILLA
---------------------------------------------------------
+
+//  Ref Constraints for Table VILLA
+
 
   ALTER TABLE "VILLA" ADD CONSTRAINT "VILLA_OWNER_FK1" FOREIGN KEY ("OWNER")
 	  REFERENCES "OWNER" ("OWNER_ID") ON DELETE CASCADE ENABLE;
 
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table FEATURE_VILLA
---------------------------------------------------------
+
+// File created - Thursday-October-09-2014   
+
+//  DDL for Table FEATURE_VILLA
 
   CREATE TABLE "FEATURE_VILLA" 
    (	"VILLA_ID" VARCHAR2(5 BYTE), 
@@ -284,9 +263,9 @@ Insert into FEATURE_VILLA (VILLA_ID,FEATURE_ID) values ('Vil7','Fea5');
 Insert into FEATURE_VILLA (VILLA_ID,FEATURE_ID) values ('Vil7','Fea6');
 Insert into FEATURE_VILLA (VILLA_ID,FEATURE_ID) values ('Vil8','Fea6');
 Insert into FEATURE_VILLA (VILLA_ID,FEATURE_ID) values ('Vil9','Fea5');
---------------------------------------------------------
---  DDL for Index FEATURE_VILLA_PK
---------------------------------------------------------
+
+//  DDL for Index FEATURE_VILLA_PK
+
 
   CREATE UNIQUE INDEX "FEATURE_VILLA_PK" ON "FEATURE_VILLA" ("VILLA_ID", "FEATURE_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
@@ -294,9 +273,9 @@ Insert into FEATURE_VILLA (VILLA_ID,FEATURE_ID) values ('Vil9','Fea5');
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table FEATURE_VILLA
---------------------------------------------------------
+
+//  Constraints for Table FEATURE_VILLA
+
 
   ALTER TABLE "FEATURE_VILLA" ADD CONSTRAINT "FEATURE_VILLA_PK" PRIMARY KEY ("VILLA_ID", "FEATURE_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
@@ -306,23 +285,19 @@ Insert into FEATURE_VILLA (VILLA_ID,FEATURE_ID) values ('Vil9','Fea5');
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "FEATURE_VILLA" MODIFY ("FEATURE_ID" NOT NULL ENABLE);
   ALTER TABLE "FEATURE_VILLA" MODIFY ("VILLA_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table FEATURE_VILLA
---------------------------------------------------------
+
+//  Ref Constraints for Table FEATURE_VILLA
+
 
   ALTER TABLE "FEATURE_VILLA" ADD CONSTRAINT "FEATURE_VILLA_FEATURE_FK1" FOREIGN KEY ("FEATURE_ID")
 	  REFERENCES "FEATURE" ("FEATURE_ID") ON DELETE CASCADE ENABLE;
   ALTER TABLE "FEATURE_VILLA" ADD CONSTRAINT "FEATURE_VILLA_VILLA_FK1" FOREIGN KEY ("VILLA_ID")
 	  REFERENCES "VILLA" ("VILLA_ID") ENABLE;
 
+//  File created - Thursday-October-09-2014   
 
+//  DDL for Table REVIEW
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table REVIEW
---------------------------------------------------------
 
   CREATE TABLE "REVIEW" 
    (	"REVIEW_ID" VARCHAR2(20 BYTE), 
@@ -356,9 +331,9 @@ Insert into REVIEW (REVIEW_ID,USER_ID,VILLA_ID,TEXT,RATING) values ('Rev11','U10
 Insert into REVIEW (REVIEW_ID,USER_ID,VILLA_ID,TEXT,RATING) values ('Rev13','U6   ','Vil7','poor one',1);
 Insert into REVIEW (REVIEW_ID,USER_ID,VILLA_ID,TEXT,RATING) values ('Rev14','U1   ','Vil7','popular one',4);
 Insert into REVIEW (REVIEW_ID,USER_ID,VILLA_ID,TEXT,RATING) values ('Rev15','U7   ','Vil3','wanna go back!',5);
---------------------------------------------------------
---  DDL for Index REVIEW_PK
---------------------------------------------------------
+
+//  DDL for Index REVIEW_PK
+
 
   CREATE UNIQUE INDEX "REVIEW_PK" ON "REVIEW" ("REVIEW_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -366,9 +341,9 @@ Insert into REVIEW (REVIEW_ID,USER_ID,VILLA_ID,TEXT,RATING) values ('Rev15','U7 
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table REVIEW
---------------------------------------------------------
+
+//  Constraints for Table REVIEW
+
 
   ALTER TABLE "REVIEW" MODIFY ("VILLA_ID" NOT NULL ENABLE);
   ALTER TABLE "REVIEW" MODIFY ("USER_ID" NOT NULL ENABLE);
@@ -379,9 +354,9 @@ Insert into REVIEW (REVIEW_ID,USER_ID,VILLA_ID,TEXT,RATING) values ('Rev15','U7 
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "REVIEW" MODIFY ("REVIEW_ID" NOT NULL ENABLE);
---------------------------------------------------------
+
 --  Ref Constraints for Table REVIEW
---------------------------------------------------------
+
 
   ALTER TABLE "REVIEW" ADD CONSTRAINT "REVIEW_VILLAUSER_FK1" FOREIGN KEY ("USER_ID")
 	  REFERENCES "VILLAUSER" ("USERID") ON DELETE CASCADE ENABLE;
@@ -389,13 +364,10 @@ Insert into REVIEW (REVIEW_ID,USER_ID,VILLA_ID,TEXT,RATING) values ('Rev15','U7 
 	  REFERENCES "VILLA" ("VILLA_ID") ON DELETE CASCADE ENABLE;
 
 
+//  File created - Thursday-October-09-2014   
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table LIKED_REVIEWS
---------------------------------------------------------
+//  DDL for Table LIKED_REVIEWS
+
 
   CREATE TABLE "LIKED_REVIEWS" 
    (	"REVIEW_ID" VARCHAR2(5 BYTE), 
@@ -419,29 +391,23 @@ Insert into LIKED_REVIEWS (REVIEW_ID,USER_ID) values ('Rev4','U9');
 Insert into LIKED_REVIEWS (REVIEW_ID,USER_ID) values ('Rev5','U2,U4');
 Insert into LIKED_REVIEWS (REVIEW_ID,USER_ID) values ('Rev14','U2,U4,U6');
 Insert into LIKED_REVIEWS (REVIEW_ID,USER_ID) values ('Rev15','U3,U6,U7');
---------------------------------------------------------
---  Constraints for Table LIKED_REVIEWS
---------------------------------------------------------
+
+//  Constraints for Table LIKED_REVIEWS
+
 
   ALTER TABLE "LIKED_REVIEWS" MODIFY ("USER_ID" NOT NULL ENABLE);
   ALTER TABLE "LIKED_REVIEWS" MODIFY ("REVIEW_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table LIKED_REVIEWS
---------------------------------------------------------
+
+//  Ref Constraints for Table LIKED_REVIEWS
+
 
   ALTER TABLE "LIKED_REVIEWS" ADD CONSTRAINT "LIKED_REVIEWS_REVIEW_FK1" FOREIGN KEY ("REVIEW_ID")
 	  REFERENCES "REVIEW" ("REVIEW_ID") ON DELETE CASCADE ENABLE;
 
 
+  File created - Thursday-October-09-2014   
 
-
-
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table MANAGER
---------------------------------------------------------
+//  DDL for Table MANAGER
 
   CREATE TABLE "MANAGER" 
    (	"MANAGER_ID" CHAR(5 BYTE), 
@@ -457,9 +423,8 @@ REM INSERTING into MANAGER
 SET DEFINE OFF;
 Insert into MANAGER (MANAGER_ID,MANAGED_BY) values ('U14  ','null ');
 Insert into MANAGER (MANAGER_ID,MANAGED_BY) values ('U15  ','U14  ');
---------------------------------------------------------
---  DDL for Index MANAGER_PK
---------------------------------------------------------
+
+//  DDL for Index MANAGER_PK
 
   CREATE UNIQUE INDEX "MANAGER_PK" ON "MANAGER" ("MANAGER_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -467,9 +432,9 @@ Insert into MANAGER (MANAGER_ID,MANAGED_BY) values ('U15  ','U14  ');
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table MANAGER
---------------------------------------------------------
+
+//  Constraints for Table MANAGER
+
 
   ALTER TABLE "MANAGER" ADD CONSTRAINT "MANAGER_PK" PRIMARY KEY ("MANAGER_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -478,21 +443,17 @@ Insert into MANAGER (MANAGER_ID,MANAGED_BY) values ('U15  ','U14  ');
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "MANAGER" MODIFY ("MANAGER_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table MANAGER
---------------------------------------------------------
+
+//  Ref Constraints for Table MANAGER
+
 
   ALTER TABLE "MANAGER" ADD CONSTRAINT "MANAGER_VILLAUSER_FK1" FOREIGN KEY ("MANAGER_ID")
 	  REFERENCES "VILLAUSER" ("USERID") ON DELETE CASCADE ENABLE;
 
 
+//  File created - Thursday-October-09-2014   
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table RATE
---------------------------------------------------------
+
 
   CREATE TABLE "RATE" 
    (	"RATE_ID" VARCHAR2(20 BYTE), 
@@ -548,9 +509,9 @@ Insert into RATE (RATE_ID,VILLA_ID,STARTDATE,ENDDATE,RATE) values ('Rat33','Vil9
 Insert into RATE (RATE_ID,VILLA_ID,STARTDATE,ENDDATE,RATE) values ('Rat34','Vil10',to_date('01-JAN-14','DD-MON-RR'),to_date('31-AUG-14','DD-MON-RR'),320);
 Insert into RATE (RATE_ID,VILLA_ID,STARTDATE,ENDDATE,RATE) values ('Rat35','Vil11',to_date('01-JAN-14','DD-MON-RR'),to_date('31-AUG-14','DD-MON-RR'),210);
 Insert into RATE (RATE_ID,VILLA_ID,STARTDATE,ENDDATE,RATE) values ('Rat36','Vil12',to_date('01-JAN-14','DD-MON-RR'),to_date('31-AUG-14','DD-MON-RR'),140);
---------------------------------------------------------
---  DDL for Index RATE_PK
---------------------------------------------------------
+
+//  DDL for Index RATE_PK
+
 
   CREATE UNIQUE INDEX "RATE_PK" ON "RATE" ("RATE_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -558,9 +519,9 @@ Insert into RATE (RATE_ID,VILLA_ID,STARTDATE,ENDDATE,RATE) values ('Rat36','Vil1
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table RATE
---------------------------------------------------------
+
+//  Constraints for Table RATE
+
 
   ALTER TABLE "RATE" ADD CONSTRAINT "RATE_PK" PRIMARY KEY ("RATE_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -570,20 +531,19 @@ Insert into RATE (RATE_ID,VILLA_ID,STARTDATE,ENDDATE,RATE) values ('Rat36','Vil1
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "RATE" MODIFY ("VILLA_ID" NOT NULL ENABLE);
   ALTER TABLE "RATE" MODIFY ("RATE_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table RATE
---------------------------------------------------------
+
+// Ref Constraints for Table RATE
+
 
   ALTER TABLE "RATE" ADD CONSTRAINT "RATE_VILLA_FK1" FOREIGN KEY ("VILLA_ID")
 	  REFERENCES "VILLA" ("VILLA_ID") ON DELETE CASCADE ENABLE;
 
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table REERVATION
---------------------------------------------------------
+
+//  File created - Thursday-October-09-2014   
+
+//  DDL for Table REERVATION
+
 
   CREATE TABLE "REERVATION" 
    (	"RESERVATION_ID" VARCHAR2(20 BYTE), 
@@ -648,9 +608,9 @@ Insert into REERVATION (RESERVATION_ID,USER_ID,VILLA_ID,STARTDATE,ENDDATE,COUPON
 Insert into REERVATION (RESERVATION_ID,USER_ID,VILLA_ID,STARTDATE,ENDDATE,COUPON_ID,DEPOSIT) values ('Res41','U8   ','Vil7',to_date('09-FEB-14','DD-MON-RR'),to_date('15-FEB-14','DD-MON-RR'),'null',75);
 Insert into REERVATION (RESERVATION_ID,USER_ID,VILLA_ID,STARTDATE,ENDDATE,COUPON_ID,DEPOSIT) values ('Res42','U5   ','Vil7',to_date('18-MAR-14','DD-MON-RR'),to_date('19-MAR-14','DD-MON-RR'),'null',75);
 Insert into REERVATION (RESERVATION_ID,USER_ID,VILLA_ID,STARTDATE,ENDDATE,COUPON_ID,DEPOSIT) values ('Res43','U6   ','Vil1',to_date('12-MAY-14','DD-MON-RR'),to_date('13-MAY-14','DD-MON-RR'),'Coup5',51);
---------------------------------------------------------
---  DDL for Index REERVATION_PK
---------------------------------------------------------
+
+//  DDL for Index REERVATION_PK
+
 
   CREATE UNIQUE INDEX "REERVATION_PK" ON "REERVATION" ("RESERVATION_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -658,9 +618,9 @@ Insert into REERVATION (RESERVATION_ID,USER_ID,VILLA_ID,STARTDATE,ENDDATE,COUPON
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table REERVATION
---------------------------------------------------------
+
+//  Constraints for Table REERVATION
+
 
   ALTER TABLE "REERVATION" ADD CONSTRAINT "REERVATION_PK" PRIMARY KEY ("RESERVATION_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -672,9 +632,9 @@ Insert into REERVATION (RESERVATION_ID,USER_ID,VILLA_ID,STARTDATE,ENDDATE,COUPON
   ALTER TABLE "REERVATION" MODIFY ("VILLA_ID" NOT NULL ENABLE);
   ALTER TABLE "REERVATION" MODIFY ("USER_ID" NOT NULL ENABLE);
   ALTER TABLE "REERVATION" MODIFY ("RESERVATION_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table REERVATION
---------------------------------------------------------
+
+// Ref Constraints for Table REERVATION
+
 
   ALTER TABLE "REERVATION" ADD CONSTRAINT "REERVATION_VILLAUSER_FK1" FOREIGN KEY ("USER_ID")
 	  REFERENCES "VILLAUSER" ("USERID") ON DELETE CASCADE ENABLE;
@@ -682,12 +642,10 @@ Insert into REERVATION (RESERVATION_ID,USER_ID,VILLA_ID,STARTDATE,ENDDATE,COUPON
 	  REFERENCES "VILLA" ("VILLA_ID") ON DELETE CASCADE ENABLE;
 
 
---------------------------------------------------------
---  File created - Thursday-October-09-2014   
---------------------------------------------------------
---------------------------------------------------------
---  DDL for Table COUPON
---------------------------------------------------------
+//  File created - Thursday-October-09-2014   
+
+//  DDL for Table COUPON
+
 
   CREATE TABLE "COUPON" 
    (	"COUPON_ID" VARCHAR2(20 BYTE), 
@@ -712,9 +670,9 @@ Insert into COUPON (COUPON_ID,VILLA_ID,STARTDATE,ENDDATE,DISCOUNTPERCENT) values
 Insert into COUPON (COUPON_ID,VILLA_ID,STARTDATE,ENDDATE,DISCOUNTPERCENT) values ('Coup3','Vil3',to_date('01-SEP-13','DD-MON-RR'),to_date('31-DEC-13','DD-MON-RR'),25);
 Insert into COUPON (COUPON_ID,VILLA_ID,STARTDATE,ENDDATE,DISCOUNTPERCENT) values ('Coup4','Vil4',to_date('01-SEP-13','DD-MON-RR'),to_date('31-DEC-13','DD-MON-RR'),10);
 Insert into COUPON (COUPON_ID,VILLA_ID,STARTDATE,ENDDATE,DISCOUNTPERCENT) values ('Coup5','Vil1',to_date('01-JAN-14','DD-MON-RR'),to_date('31-AUG-14','DD-MON-RR'),15);
---------------------------------------------------------
---  DDL for Index COUPON_PK
---------------------------------------------------------
+
+//  DDL for Index COUPON_PK
+
 
   CREATE UNIQUE INDEX "COUPON_PK" ON "COUPON" ("COUPON_ID") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -722,9 +680,9 @@ Insert into COUPON (COUPON_ID,VILLA_ID,STARTDATE,ENDDATE,DISCOUNTPERCENT) values
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  Constraints for Table COUPON
---------------------------------------------------------
+
+//  Constraints for Table COUPON
+
 
   ALTER TABLE "COUPON" ADD CONSTRAINT "COUPON_PK" PRIMARY KEY ("COUPON_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -734,23 +692,19 @@ Insert into COUPON (COUPON_ID,VILLA_ID,STARTDATE,ENDDATE,DISCOUNTPERCENT) values
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "COUPON" MODIFY ("VILLA_ID" NOT NULL ENABLE);
   ALTER TABLE "COUPON" MODIFY ("COUPON_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Ref Constraints for Table COUPON
---------------------------------------------------------
+
+//  Ref Constraints for Table COUPON
+
 
   ALTER TABLE "COUPON" ADD CONSTRAINT "COUPON_VILLA_FK1" FOREIGN KEY ("VILLA_ID")
 	  REFERENCES "VILLA" ("VILLA_ID") ON DELETE CASCADE ENABLE;
 
 
 
-
-
------------------------------------------------------------------------------------------------------------------
-
 // DIFFERENT QUERIES TO RETRIEVE DATA//
 
-------------------------------------------------------------------------------------------------------------------
-// Query to select name of those villas that have Jacuzzi but do not allow pets.
+
+// List all those villas that are equipped with Jacuzzi and follow no-pet policy
 SELECT DISTINCT NAME FROM C##ritika.VILLA VILLA
 INNER JOIN C##ritika.FEATURE_VILLA  ON
 VILLA.VILLA_ID = FEATURE_VILLA.VILLA_ID
@@ -765,7 +719,7 @@ INNER JOIN  C##ritika.FEATURE  ON
 FEATURE_VILLA.FEATURE_ID =  FEATURE.FEATURE_ID
 AND FEATURE.FEATURE_NAME='pets allowed';
     
-//Query to select users who have booked the maximum number of Villas
+//List all the villa owner names, as well as the count of villas they own, sorted by count of villas
 select u.user_name_firstname ,count(v.villa_id)
 from villa v
 inner join villauser u
@@ -773,7 +727,7 @@ on v.owner = u.userid
 group by u.user_name_firstname
 order by count(v.villa_id);
 
-//Query to select Users who have got more than 10% of discount on rservation
+//Finding the first and last name of all the users who have ever used a coupon code offering a discount more than 10%.
 select distinct(u.user_name_firstname), u.user_name_lastname
 from villauser u
 inner join reervation r
@@ -783,7 +737,7 @@ on r.coupon_id = c.coupon_id
 where c.discountpercent > '10';
           
           
-//Query to select top 3 users who booked the villas between 1st Jan to 31st December      
+//Finding the names of top three users who have had the highest amount of deposit during 2013.  
 select * from
 (select sum(r.deposit) total, u.user_name_firstname
 from villauser u 
@@ -795,14 +749,14 @@ order by total desc)
 where rownum <= 3;
          
          
-         
+//Finding the average age of users who rented villas during low-season last year.         
 select avg(extract(year from r.startdate) - extract(year from u.user_dob)) as age 
 from villauser u
 inner join reervation r
 on u.userid = r.user_id
 where r.startdate BETWEEN to_date('09/01/2013','mm/dd/yyyy') AND to_date('12/31/2013','mm/dd/yyyy')
 
-
+// Find three villas and their associated owners, who have the highest average user rating
 select * from 
 (select v.villa_id, u.userid, u.user_name_firstname, u.user_name_lastname, r.rating
 from review r
@@ -814,7 +768,7 @@ where r.rating > (select avg(r.rating) from C##ritika.review r)
 order by r.rating desc)
 where rownum <=3;
 
-
+// Find the villa with the highest count of reserved nights in 2014
 select * from (
 select distinct v.villa_id, sum(r.enddate - r.startdate) as reserved_nights
 from villa v
@@ -825,7 +779,7 @@ group by v.villa_id
 order by reserved_nights desc)
 where rownum <= 1;
 
-
+//Query to find the most famous reviewer: the user who owns reviews that have been liked the most for a larger number of villas compared to any other reviewer.
 select review.user_id, count(villa_id) as number_review
 from review, liked_reviews, villauser
 where review.review_id = liked_reviews.review_id 
@@ -834,6 +788,9 @@ and rownum <=1
 group by review.user_id 
 order by number_review desc;
 
+
+//Query to find the vacancy ratio for each owner in 8/15/2014.
+//Where Vacancy Ratio is ratio of villas not reserved for a specific date / total number of villas owned by that owner
 SELECT user_name_firstname, user_name_lastname, VACANCYRATIO FROM villauser U,
 (SELECT T2.OWNER AS OWN_ID, (OWNED-COALESCE(RESERVED,0))/OWNED AS
 VACANCYRATIO FROM
@@ -847,7 +804,7 @@ RIGHT JOIN
 where villauser.USERID LIKE villa.owner
 group by villa.owner) T2 on T1.OWNER LIKE T2.OWNER) T3;
 
-
+//Query to find out a user who has reserved two or more villas at overlapping periods
 select u.user_name_firstname, 
 u.user_name_lastname 
 FROM villauser u, reervation r
